@@ -1,0 +1,64 @@
+-- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
+--
+-- Host: localhost    Database: final_project_2
+-- ------------------------------------------------------
+-- Server version	9.5.0
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN;
+SET @@SESSION.SQL_LOG_BIN= 0;
+
+--
+-- GTID state at the beginning of the backup 
+--
+
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ 'e48d758a-f1ab-11f0-a2a3-c4c6e6a11280:1-253';
+
+--
+-- Table structure for table `order_payment`
+--
+
+DROP TABLE IF EXISTS `order_payment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order_payment` (
+  `orderID` int NOT NULL,
+  `paymentID` int NOT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`orderID`,`paymentID`),
+  KEY `paymentID` (`paymentID`),
+  CONSTRAINT `order_payment_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`),
+  CONSTRAINT `order_payment_ibfk_2` FOREIGN KEY (`paymentID`) REFERENCES `payment` (`paymentID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_payment`
+--
+
+LOCK TABLES `order_payment` WRITE;
+/*!40000 ALTER TABLE `order_payment` DISABLE KEYS */;
+INSERT INTO `order_payment` VALUES (1,1,1249.98),(2,2,2099.98),(3,1,549.98),(4,3,1299.99),(5,2,1299.98),(6,1,2099.98),(7,4,1099.97),(8,2,1299.98),(9,1,949.98),(10,3,2059.95),(11,1,1899.98),(12,2,1299.98),(13,1,1029.98),(14,4,1399.98),(15,1,899.98),(16,2,1649.98),(17,3,1299.98),(18,1,1229.95),(19,2,1299.98),(20,1,1349.98),(21,4,1099.95),(22,1,1499.98),(23,2,1299.98),(24,3,1499.96),(25,1,1059.97),(26,2,1149.98),(27,1,229.96),(28,3,1799.98),(29,4,1599.98),(30,1,2499.95),(31,1,1072.49),(32,2,1403.99),(33,3,2974.97),(34,2,637.49),(35,3,1608.72),(36,2,11687.38),(37,2,249.99),(38,4,5537.86),(39,1,193.03),(40,1,159.36),(41,1,19999.80),(42,1,55249.45),(43,1,2915.97);
+/*!40000 ALTER TABLE `order_payment` ENABLE KEYS */;
+UNLOCK TABLES;
+SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-05 22:05:09

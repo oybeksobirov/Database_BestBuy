@@ -1,0 +1,66 @@
+-- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
+--
+-- Host: localhost    Database: final_project_2
+-- ------------------------------------------------------
+-- Server version	9.5.0
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN;
+SET @@SESSION.SQL_LOG_BIN= 0;
+
+--
+-- GTID state at the beginning of the backup 
+--
+
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ 'e48d758a-f1ab-11f0-a2a3-c4c6e6a11280:1-253';
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `orderID` int NOT NULL,
+  `orderDate` date DEFAULT NULL,
+  `storeID` int DEFAULT NULL,
+  `customerID` int DEFAULT NULL,
+  PRIMARY KEY (`orderID`),
+  KEY `storeID` (`storeID`),
+  KEY `customerID` (`customerID`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`storeID`) REFERENCES `store` (`storeID`),
+  CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`customerID`) REFERENCES `customer` (`customerID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'2025-01-05',1,1),(2,'2025-01-12',2,2),(3,'2025-01-20',3,3),(4,'2025-01-28',4,4),(5,'2025-02-03',5,5),(6,'2025-02-10',6,6),(7,'2025-02-14',1,7),(8,'2025-02-20',2,8),(9,'2025-02-25',3,9),(10,'2025-03-01',4,10),(11,'2025-03-05',5,11),(12,'2025-03-10',6,12),(13,'2025-03-15',1,1),(14,'2025-03-18',2,3),(15,'2025-03-22',3,5),(16,'2025-03-28',4,2),(17,'2025-04-02',5,4),(18,'2025-04-05',6,6),(19,'2025-04-10',1,8),(20,'2025-04-15',2,9),(21,'2025-04-18',3,10),(22,'2025-04-20',4,1),(23,'2025-04-22',5,2),(24,'2025-04-25',6,3),(25,'2025-04-28',1,13),(26,'2025-04-30',2,14),(27,'2025-05-01',3,15),(28,'2025-05-02',4,7),(29,'2025-05-03',5,8),(30,'2025-05-04',6,9),(31,'2026-04-29',1,16),(32,'2026-04-29',2,17),(33,'2026-04-29',3,18),(34,'2026-04-29',3,19),(35,'2026-04-29',1,20),(36,'2026-04-29',3,21),(37,'2026-04-29',6,22),(38,'2026-04-29',5,23),(39,'2026-04-29',1,24),(40,'2026-04-30',3,25),(41,'2026-04-30',6,26),(42,'2026-04-30',3,27),(43,'2026-04-30',2,28);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-05 22:05:11
